@@ -13,7 +13,7 @@ import com.experiments.compose.data.SampleData.toTransactionGroups
 import com.experiments.compose.ui.theme.ComposeExperimentsTheme
 
 class MainActivity : ComponentActivity() {
-  @ExperimentalFoundationApi
+  @OptIn(ExperimentalFoundationApi::class)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
