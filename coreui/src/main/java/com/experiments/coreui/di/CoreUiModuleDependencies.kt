@@ -1,7 +1,6 @@
 package com.experiments.coreui.di
 
 import com.experiments.coreui.data.repository.NameRepository
-import com.experiments.coreui.data.source.NameDataSource
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
@@ -12,8 +11,6 @@ import dagger.hilt.components.SingletonComponent
 @EntryPoint
 @InstallIn(SingletonComponent::class)
 interface CoreUiModuleDependencies {
-
-  fun getLocalNameDataSource(): NameDataSource
 
   fun getNameRepository(): NameRepository
 }
