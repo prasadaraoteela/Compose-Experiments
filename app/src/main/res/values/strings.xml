@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ComposeExperiments</string>
+
+    <string name="show_less">Show less</string>
+    <string name="show_more">Show more</string>
+    <string name="title_activity_test_compose">TestComposeActivity</string>
+</resources>
