@@ -3,40 +3,85 @@ package com.experiments.coreui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material.Surface
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.experiments.coreui.ui.theme.ComposeExperimentsTheme
+import com.experiments.coreui.data.repository.DefaultNameRepository
+import com.experiments.coreui.data.repository.NameRepository
+import com.experiments.coreui.data.source.local.NameLocalDataSource
+import com.experiments.coreui.di.CoreUiModuleDependencies
+import com.experiments.coreui.di.DaggerCoreUiComponent
+import dagger.hilt.android.EntryPointAccessors
+import javax.inject.Inject
+import kotlin.random.Random
 
 class CoreComposeUiActivity : ComponentActivity() {
+
+  @Inject lateinit var repository: NameRepository
+
   override fun onCreate(savedInstanceState: Bundle?) {
+
+    DaggerCoreUiComponent.builder()
+      .context(this)
+      .appDependencies(
+        EntryPointAccessors.fromApplication(applicationContext, CoreUiModuleDependencies::class.java)
+      ).build()
+      .inject(this)
+
     super.onCreate(savedInstanceState)
     setContent {
-
+      MainScreen(repository)
     }
   }
 }
 
 @Composable
-fun MainScreen() {
-  Surface(
-    color = Color.DarkGray,
-    modifier = Modifier.fillMaxSize()
+fun MainScreen(repository: NameRepository) {
+
+  Column(
+    modifier = Modifier.fillMaxSize(),
+    verticalArrangement = Arrangement.SpaceEvenly,
+    horizontalAlignment = Alignment.CenterHorizontally
   ) {
-    Text(
-      text = "Wrapped Content",
-      modifier = Modifier.wrapContentSize()
-    )
+    GreetingList(repository)
   }
+}
+
+@Composable
+fun GreetingList(repository: NameRepository) {
+
+  val greetingStateList by repository.observeNames().observeAsState()
+
+  greetingStateList?.forEach { name ->
+    Greeting(name = name)
+  }
+
+  Button(onClick = {
+    repository.addName("New Name ${Random.nextInt(999999)}")
+  }) {
+    Text(text = "Add new name")
+  }
+}
+
+@Composable
+fun Greeting(name: String) {
+  Text(
+    text = "Hello, $name!",
+    style = MaterialTheme.typography.h3
+  )
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-  MainScreen()
+fun GreetingListPreview() {
+  MainScreen(DefaultNameRepository(NameLocalDataSource()))
 }

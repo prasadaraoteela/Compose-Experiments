@@ -1,16 +1,23 @@
 package com.experiments.compose
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
-import com.experiments.compose.components.*
+import com.experiments.compose.components.AccountDetails
+import com.experiments.compose.components.Greetings
+import com.experiments.compose.components.OnboardScreen
 import com.experiments.compose.data.SampleData.parseFromAssets
 import com.experiments.compose.data.SampleData.toTransactionGroups
 import com.experiments.compose.ui.theme.ComposeExperimentsTheme
+import com.experiments.coreui.CoreComposeUiActivity
 
 class MainActivity : ComponentActivity() {
   @OptIn(ExperimentalFoundationApi::class)
@@ -23,6 +30,8 @@ class MainActivity : ComponentActivity() {
         AccountDetails(account = accountDetail.account, transactionGroups = accountDetail.toTransactionGroups())
       }
     }
+
+    startActivity(Intent(this, CoreComposeUiActivity::class.java))
   }
 
   @Composable

@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "ComposeExperiments"
 include ':app'
 include ':coreui'
+include ':common'
