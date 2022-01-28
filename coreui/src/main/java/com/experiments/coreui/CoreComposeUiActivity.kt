@@ -18,25 +18,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.experiments.coreui.data.repository.DefaultNameRepository
 import com.experiments.coreui.data.repository.NameRepository
 import com.experiments.coreui.data.source.local.NameLocalDataSource
-import com.experiments.coreui.di.CoreUiModuleDependencies
-import com.experiments.coreui.di.DaggerCoreUiComponent
-import dagger.hilt.android.EntryPointAccessors
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import kotlin.random.Random
 
+@AndroidEntryPoint
 class CoreComposeUiActivity : ComponentActivity() {
 
   @Inject lateinit var repository: NameRepository
 
   override fun onCreate(savedInstanceState: Bundle?) {
-
-    DaggerCoreUiComponent.builder()
-      .context(this)
-      .appDependencies(
-        EntryPointAccessors.fromApplication(applicationContext, CoreUiModuleDependencies::class.java)
-      ).build()
-      .inject(this)
-
     super.onCreate(savedInstanceState)
     setContent {
       MainScreen(repository)
