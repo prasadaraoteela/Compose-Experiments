@@ -1,7 +1,5 @@
 package com.experiments.coreui.data.source.local
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.experiments.coreui.data.source.NameDataSource
 
 /**
@@ -10,14 +8,10 @@ import com.experiments.coreui.data.source.NameDataSource
 class NameLocalDataSource : NameDataSource {
 
   private val names = ArrayList<String>()
-  private val namesLiveData = MutableLiveData<List<String>>()
 
   override fun fetchNames(): List<String> = names
 
   override fun addName(name: String) {
     names.add(name)
-    namesLiveData.postValue(names)
   }
-
-  override fun observeNames(): LiveData<List<String>> = namesLiveData
 }

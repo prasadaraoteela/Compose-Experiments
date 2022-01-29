@@ -1,6 +1,5 @@
 package com.experiments.coreui.data.repository
 
-import androidx.lifecycle.LiveData
 import com.experiments.coreui.data.source.NameDataSource
 
 class DefaultNameRepository(
@@ -12,6 +11,4 @@ class DefaultNameRepository(
   override fun addName(name: String) {
     local.addName(name)
   }
-
-  override fun observeNames(): LiveData<List<String>> = local.observeNames()
 }
