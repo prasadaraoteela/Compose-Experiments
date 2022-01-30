@@ -23,10 +23,16 @@ val BlueGrey200 = Color(0xFFB0BEC5)
 val BlueGrey700 = Color(0xFF455A64)
 val BlueGrey900 = Color(0xFF263238)
 
+val Red500 = Color(0xFFF44336)
+
 val ExtraLightGrey = Color(0xFFDCDCDC)
 
 val LightGreen = Color(0x9932CD32)
 
-val Colors.lightGreen
+val Colors.lightGreen: Color
   @Composable
   get() = LightGreen
+
+val Colors.red: Color
+  @Composable
+  get() = Red500

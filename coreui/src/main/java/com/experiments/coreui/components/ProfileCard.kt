@@ -9,23 +9,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.experiments.coreui.R
+import com.experiments.coreui.model.User
 import com.experiments.coreui.ui.theme.MyTheme
 import com.experiments.coreui.ui.theme.lightGreen
+import com.experiments.coreui.ui.theme.red
 
 /**
  * Created by Prasada Rao on 29/01/22 11:37 AM
  **/
 @Composable
-fun ProfileCard(modifier: Modifier = Modifier) {
+fun ProfileCard(
+  modifier: Modifier = Modifier,
+  user: User
+) {
   Card(
     modifier = modifier
-      .padding(16.dp)
       .fillMaxWidth()
       .wrapContentHeight(align = Alignment.Top),
     elevation = 8.dp,
@@ -35,21 +38,28 @@ fun ProfileCard(modifier: Modifier = Modifier) {
       verticalAlignment = Alignment.CenterVertically,
       horizontalArrangement = Arrangement.Start
     ) {
-      ProfilePicture()
-      ProfileContent(name = "Adam")
+      ProfilePicture(user = user)
+      ProfileContent(user = user)
     }
   }
 }
 
 @Composable
-fun ProfilePicture() {
+fun ProfilePicture(user: User) {
   Card(
     shape = CircleShape,
-    border = BorderStroke(2.dp, MaterialTheme.colors.lightGreen),
+    border = BorderStroke(
+      2.dp,
+      if (user.activeState == User.ActiveState.Online) {
+        MaterialTheme.colors.lightGreen
+      } else {
+        MaterialTheme.colors.red
+      }
+    ),
     modifier = Modifier.padding(8.dp)
   ) {
     Image(
-      painter = painterResource(id = R.drawable.profile_picture_1),
+      painter = painterResource(id = user.profilePicture),
       contentDescription = null,
       modifier = Modifier.size(72.dp),
       contentScale = ContentScale.Crop
@@ -58,19 +68,31 @@ fun ProfilePicture() {
 }
 
 @Composable
-fun ProfileContent(name: String) {
+fun ProfileContent(user: User) {
   Column(
     modifier = Modifier
       .padding(8.dp)
       .fillMaxWidth()
   ) {
-    Text(
-      text = name,
-      style = MaterialTheme.typography.h5
-    )
+    CompositionLocalProvider(
+      LocalContentAlpha provides if (user.activeState == User.ActiveState.Online) {
+        ContentAlpha.high
+      } else {
+        ContentAlpha.medium
+      }
+    ) {
+      Text(
+        text = user.name,
+        style = MaterialTheme.typography.h5.copy(fontWeight = FontWeight.Bold)
+      )
+    }
     CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
       Text(
-        text = "Active Now",
+        text = if (user.activeState == User.ActiveState.Online) {
+          "Active Now"
+        } else {
+          "Offline"
+        },
         style = MaterialTheme.typography.body2,
       )
     }
@@ -81,7 +103,7 @@ fun ProfileContent(name: String) {
 @Composable
 fun ProfileCardPreview() {
   MyTheme {
-    ProfileCard()
+    ProfileCard(user = users[0])
   }
 }
 
@@ -89,6 +111,6 @@ fun ProfileCardPreview() {
 @Composable
 fun ProfileCardDarkPreview() {
   MyTheme(darkTheme = true) {
-    ProfileCard()
+    ProfileCard(user = users[0])
   }
 }

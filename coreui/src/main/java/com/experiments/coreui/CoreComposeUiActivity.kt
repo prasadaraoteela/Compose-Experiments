@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.experiments.coreui.components.ProfileCard
+import com.experiments.coreui.components.UsersList
 import com.experiments.coreui.ui.theme.MyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,7 +39,7 @@ fun MainScreen() {
     Surface(
       modifier = Modifier.fillMaxSize(),
     ) {
-      ProfileCard()
+      UsersList()
     }
   }
 }
