@@ -8,7 +8,8 @@ import androidx.annotation.DrawableRes
 data class User(
   val name: String,
   val activeState: ActiveState = ActiveState.Online,
-  @DrawableRes val profilePicture: Int
+  @DrawableRes val profilePicture: Int,
+  val imageUrl: String
 ) {
 
   enum class ActiveState {

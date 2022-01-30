@@ -15,12 +15,51 @@ import com.experiments.coreui.model.User
  **/
 
 val users = listOf(
-  User(name = "Adam", profilePicture = R.drawable.profile_picture_1),
-  User(name = "Eve", profilePicture = R.drawable.profile_picture_2),
-  User(name = "Adam", profilePicture = R.drawable.profile_picture_1),
-  User(name = "Eve", activeState = User.ActiveState.Offline, profilePicture = R.drawable.profile_picture_2),
-  User(name = "Adam", activeState = User.ActiveState.Offline, profilePicture = R.drawable.profile_picture_1),
-  User(name = "Eve", activeState = User.ActiveState.Offline, profilePicture = R.drawable.profile_picture_2),
+  User(
+    name = "James",
+    profilePicture = R.drawable.profile_picture_1,
+    imageUrl = "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  ),
+  User(
+    name = "Robert",
+    profilePicture = R.drawable.profile_picture_2,
+    imageUrl = "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+  ),
+  User(
+    name = "John",
+    profilePicture = R.drawable.profile_picture_1,
+    imageUrl = "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+  ),
+  User(
+    name = "Mary",
+    activeState = User.ActiveState.Offline,
+    profilePicture = R.drawable.profile_picture_2,
+    imageUrl = "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+  ),
+  User(
+    name = "Patricia",
+    activeState = User.ActiveState.Offline,
+    profilePicture = R.drawable.profile_picture_1,
+    imageUrl = "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+  ),
+  User(
+    name = "Jennifer",
+    activeState = User.ActiveState.Offline,
+    profilePicture = R.drawable.profile_picture_2,
+    imageUrl = "https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+  ),
+  User(
+    name = "Elizabeth",
+    activeState = User.ActiveState.Offline,
+    profilePicture = R.drawable.profile_picture_2,
+    imageUrl = "https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+  ),
+  User(
+    name = "Michael",
+    activeState = User.ActiveState.Offline,
+    profilePicture = R.drawable.profile_picture_2,
+    imageUrl = "https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+  ),
 )
 
 @Composable
