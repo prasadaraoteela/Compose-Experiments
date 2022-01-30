@@ -15,6 +15,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.experiments.coreui.R
+import com.experiments.coreui.ui.theme.MyTheme
+import com.experiments.coreui.ui.theme.lightGreen
 
 /**
  * Created by Prasada Rao on 29/01/22 11:37 AM
@@ -43,7 +45,7 @@ fun ProfileCard(modifier: Modifier = Modifier) {
 fun ProfilePicture() {
   Card(
     shape = CircleShape,
-    border = BorderStroke(2.dp, Color.Green),
+    border = BorderStroke(2.dp, MaterialTheme.colors.lightGreen),
     modifier = Modifier.padding(8.dp)
   ) {
     Image(
@@ -78,5 +80,15 @@ fun ProfileContent(name: String) {
 @Preview(showBackground = true)
 @Composable
 fun ProfileCardPreview() {
-  ProfileCard()
+  MyTheme {
+    ProfileCard()
+  }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ProfileCardDarkPreview() {
+  MyTheme(darkTheme = true) {
+    ProfileCard()
+  }
 }
