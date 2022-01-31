@@ -3,10 +3,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
     }
 }
 rootProject.name = "ComposeExperiments"
 include ':app'
 include ':coreui'
 include ':common'
+include ':mealzapp'
+include ':library:retrofit'
