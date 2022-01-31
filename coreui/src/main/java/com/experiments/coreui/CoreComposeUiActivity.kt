@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import com.experiments.coreui.ui.component.users
 import com.experiments.coreui.ui.navigation.UserProfileApplication
 import com.experiments.coreui.ui.theme.MyTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,7 +18,7 @@ class CoreComposeUiActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
     setContent {
       MyTheme {
-        UserProfileApplication()
+        UserProfileApplication(users = users)
       }
     }
   }

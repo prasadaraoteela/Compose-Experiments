@@ -3,6 +3,8 @@ package com.experiments.coreui.ui.screen
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -17,7 +19,12 @@ import com.experiments.coreui.ui.theme.MyTheme
 @Composable
 fun UserListScreen(navController: NavHostController? = null) {
 
-  Scaffold(topBar = { MyAppBar() }) {
+  Scaffold(topBar = {
+    MyAppBar(
+      title = "Users",
+      navigationIcon = Icons.Default.Home,
+    )
+  }) {
     Surface(
       modifier = Modifier.fillMaxSize(),
     ) {
