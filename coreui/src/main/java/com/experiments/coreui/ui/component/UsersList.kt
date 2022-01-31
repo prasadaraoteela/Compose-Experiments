@@ -1,4 +1,4 @@
-package com.experiments.coreui.components
+package com.experiments.coreui.ui.component
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
