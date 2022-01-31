@@ -18,7 +18,7 @@ import com.experiments.coreui.ui.component.users
  * Created by Prasada Rao on 30/01/22 5:31 PM
  **/
 @Composable
-fun UserProfileDetailsScreen(user: User) {
+fun UserProfileDetailsScreen(user: User = users[0]) {
   Scaffold(topBar = { MyAppBar() }) {
     Surface(modifier = Modifier.fillMaxSize()) {
       Column(

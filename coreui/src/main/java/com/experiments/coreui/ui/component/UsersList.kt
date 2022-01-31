@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.experiments.coreui.R
 import com.experiments.coreui.model.User
 
@@ -65,13 +66,16 @@ val users = listOf(
 @Composable
 fun UsersList(
   modifier: Modifier = Modifier,
+  navController: NavHostController? = null
 ) {
   LazyColumn(modifier = modifier) {
     items(users) { user ->
       ProfileCard(
         user = user,
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-      )
+        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+      ) {
+        navController?.navigate(route = "user_details")
+      }
     }
   }
 }

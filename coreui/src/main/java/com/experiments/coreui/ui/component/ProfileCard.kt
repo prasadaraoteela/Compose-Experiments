@@ -2,6 +2,7 @@ package com.experiments.coreui.ui.component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -28,12 +29,14 @@ import com.experiments.coreui.ui.theme.red
 @Composable
 fun ProfileCard(
   modifier: Modifier = Modifier,
-  user: User
+  user: User,
+  onProfileCardClicked: () -> Unit = {}
 ) {
   Card(
     modifier = modifier
       .fillMaxWidth()
-      .wrapContentHeight(align = Alignment.Top),
+      .wrapContentHeight(align = Alignment.Top)
+      .clickable { onProfileCardClicked() },
     elevation = 8.dp,
   ) {
     Row(
