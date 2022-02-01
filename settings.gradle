@@ -8,7 +8,6 @@ dependencyResolutionManagement {
 rootProject.name = "ComposeExperiments"
 include ':app'
 include ':coreui'
-include ':common'
 include ':mealzapp'
 include ':library:retrofit'
 include ':library:core'

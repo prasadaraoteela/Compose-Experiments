@@ -1,4 +1,4 @@
-package com.experiments.common.di.qualifier
+package com.library.core.di
 
 import javax.inject.Qualifier
 
