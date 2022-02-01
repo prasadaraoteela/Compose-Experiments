@@ -20,5 +20,5 @@ dependencies {
     api 'com.squareup.okhttp3:logging-interceptor:4.5.0'
 
     // Core library
-    implementation project(':library:core')
+    implementation project(':libraries:core')
 }

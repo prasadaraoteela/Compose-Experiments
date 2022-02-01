@@ -15,6 +15,6 @@ dependencies {
 
     implementation "io.coil-kt:coil-compose:1.4.0"
 
-    implementation project(":library:core")
-    implementation project(":library:retrofit")
+    implementation project(":libraries:core")
+    implementation project(":libraries:retrofit")
 }

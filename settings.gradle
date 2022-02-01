@@ -9,5 +9,5 @@ rootProject.name = "ComposeExperiments"
 include ':app'
 include ':coreui'
 include ':mealzapp'
-include ':library:retrofit'
-include ':library:core'
+include ':libraries:retrofit'
+include ':libraries:core'
