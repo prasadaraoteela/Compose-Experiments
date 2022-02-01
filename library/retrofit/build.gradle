@@ -14,8 +14,11 @@ dependencies {
     kapt "com.google.dagger:hilt-compiler:2.40.5"
 
     // Retrofit library dependencies
-    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
-    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
-    implementation 'com.squareup.okhttp3:okhttp:4.5.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.5.0'
+    api 'com.squareup.retrofit2:retrofit:2.8.1'
+    api 'com.squareup.retrofit2:converter-gson:2.8.1'
+    api 'com.squareup.okhttp3:okhttp:4.5.0'
+    api 'com.squareup.okhttp3:logging-interceptor:4.5.0'
+
+    // Core library
+    implementation project(':library:core')
 }

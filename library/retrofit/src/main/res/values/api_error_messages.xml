@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="network_error_poor_internet">Poor internet connection detected. Please check your connectivity.</string>
+    <string name="network_error_no_response">Unable to fetch response from the server. Please try again.</string>
+    <string name="network_error_no_error_body">Unable to fetch response from the server. Please try again.</string>
+    <string name="network_error_socket_connection_failure">Unable to connect to server.</string>
+    <string name="network_error_io_exception">Unable to fetch response from the server. Please try again.</string>
+    <string name="network_error_unknown">Unable to fetch response from the server. Please try again.</string>
+    <string name="network_error_unknown_in_log_interceptor">Unable to fetch response from the server. Please try again.</string>
+    <string name="network_error_empty_diagnostics_secret_key">Diagnostics secret key is empty!</string>
+    <string name="network_error_could_not_process_request">Could not process request.</string>
+    <string name="network_error_response_parsing">Unable to fetch response from the server. Please try again.</string>
+    <string name="network_error_wrong_error_body">Unable to fetch response from the server. Please try again.</string>
+</resources>
