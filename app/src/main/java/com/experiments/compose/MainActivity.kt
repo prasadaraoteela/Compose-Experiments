@@ -18,6 +18,7 @@ import com.experiments.compose.data.SampleData.parseFromAssets
 import com.experiments.compose.data.SampleData.toTransactionGroups
 import com.experiments.compose.ui.theme.ComposeExperimentsTheme
 import com.experiments.coreui.CoreComposeUiActivity
+import com.udemy.mealz.ui.MealCategoriesActivity
 
 class MainActivity : ComponentActivity() {
   @OptIn(ExperimentalFoundationApi::class)
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
       }
     }
 
-    startActivity(Intent(this, CoreComposeUiActivity::class.java))
+    startActivity(Intent(this, MealCategoriesActivity::class.java))
   }
 
   @Composable

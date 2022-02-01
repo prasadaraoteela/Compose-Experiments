@@ -14,4 +14,7 @@ dependencies {
     // Hilt DI library
     implementation "com.google.dagger:hilt-android:2.40.5"
     kapt "com.google.dagger:hilt-compiler:2.40.5"
+
+    // Mealz app module
+    implementation project(":mealzapp")
 }

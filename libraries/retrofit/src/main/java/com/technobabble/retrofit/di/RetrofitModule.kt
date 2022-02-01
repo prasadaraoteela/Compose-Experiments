@@ -3,6 +3,8 @@ package com.technobabble.retrofit.di
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -13,6 +15,7 @@ import javax.inject.Singleton
  * Created by Prasada Rao on 31/01/22 6:20 PM
  **/
 @Module
+@InstallIn(SingletonComponent::class)
 object RetrofitModule {
 
   @Singleton
