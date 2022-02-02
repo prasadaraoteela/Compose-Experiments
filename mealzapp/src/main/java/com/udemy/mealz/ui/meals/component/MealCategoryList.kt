@@ -1,11 +1,12 @@
 package com.udemy.mealz.ui.meals.component
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.udemy.mealz.data.model.MealCategory
 
 /**
@@ -16,7 +17,9 @@ import com.udemy.mealz.data.model.MealCategory
 fun MealCategoryList(
   mealCategories: List<MealCategory>
 ) {
-  LazyVerticalGrid(cells = GridCells.Fixed(count = 2)) {
+  LazyColumn(
+    contentPadding = PaddingValues(16.dp)
+  ) {
     items(mealCategories) { mealCategory ->
       MealCategoryCard(mealCategory = mealCategory)
     }
