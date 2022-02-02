@@ -26,4 +26,12 @@ class MealRemoteDataSource(
       }
     )
   }
+
+  override suspend fun saveMealCategories(mealCategories: List<MealCategory>) {
+    TODO("Not yet implemented")
+  }
+
+  override suspend fun findMealCategoryById(mealCategoryId: String): MealCategory {
+    TODO("Not yet implemented")
+  }
 }

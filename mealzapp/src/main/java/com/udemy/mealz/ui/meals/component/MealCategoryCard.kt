@@ -23,7 +23,8 @@ import com.udemy.mealz.data.model.MealCategory
 @Composable
 fun MealCategoryCard(
   modifier: Modifier = Modifier,
-  mealCategory: MealCategory
+  mealCategory: MealCategory,
+  onMealCategoryClicked: (String) -> Unit = {}
 ) {
 
   var isExpanded by remember { mutableStateOf(false) }
@@ -34,6 +35,7 @@ fun MealCategoryCard(
     modifier = modifier
       .fillMaxWidth()
       .padding(top = 16.dp)
+      .clickable { onMealCategoryClicked(mealCategory.id) }
   ) {
     Row(modifier = Modifier.animateContentSize()) {
       Image(

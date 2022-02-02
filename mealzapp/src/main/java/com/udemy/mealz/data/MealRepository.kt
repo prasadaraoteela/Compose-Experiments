@@ -9,4 +9,6 @@ import com.udemy.mealz.data.model.MealCategory
 interface MealRepository {
 
   suspend fun fetchMealCategories(): Result<List<MealCategory>>
+
+  suspend fun findMealCategoryById(mealCategoryId: String): MealCategory
 }

@@ -15,13 +15,17 @@ import com.udemy.mealz.data.model.MealCategory
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MealCategoryList(
-  mealCategories: List<MealCategory>
+  mealCategories: List<MealCategory>,
+  onMealCategoryClicked: (String) -> Unit = {}
 ) {
   LazyColumn(
     contentPadding = PaddingValues(16.dp)
   ) {
     items(mealCategories) { mealCategory ->
-      MealCategoryCard(mealCategory = mealCategory)
+      MealCategoryCard(
+        mealCategory = mealCategory,
+        onMealCategoryClicked = onMealCategoryClicked
+      )
     }
   }
 }

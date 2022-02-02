@@ -1,2 +1,3 @@
 <resources>
+    <string name="button_change_meal_state_image">Change state of meal profile picture</string>
 </resources>
