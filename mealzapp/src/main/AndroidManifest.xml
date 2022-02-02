@@ -4,7 +4,7 @@
 
     <application>
         <activity
-            android:name=".ui.MealCategoriesActivity"
+            android:name=".ui.meals.MealCategoriesActivity"
             android:exported="false" />
     </application>
 

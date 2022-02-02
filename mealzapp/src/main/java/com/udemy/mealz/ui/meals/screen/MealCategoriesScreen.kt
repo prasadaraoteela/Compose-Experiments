@@ -1,4 +1,4 @@
-package com.udemy.mealz.ui.screen
+package com.udemy.mealz.ui.meals.screen
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -8,7 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.library.core.data.Result
 import com.udemy.mealz.data.model.MealCategory
-import com.udemy.mealz.ui.component.MealCategoryList
+import com.udemy.mealz.ui.meals.component.MealCategoryList
 import com.udemy.mealz.ui.meals.MealCategoryViewModel
 
 /**

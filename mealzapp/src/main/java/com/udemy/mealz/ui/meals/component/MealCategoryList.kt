@@ -1,4 +1,4 @@
-package com.udemy.mealz.ui.component
+package com.udemy.mealz.ui.meals.component
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items

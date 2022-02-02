@@ -17,8 +17,7 @@ import com.experiments.compose.components.OnboardScreen
 import com.experiments.compose.data.SampleData.parseFromAssets
 import com.experiments.compose.data.SampleData.toTransactionGroups
 import com.experiments.compose.ui.theme.ComposeExperimentsTheme
-import com.experiments.coreui.CoreComposeUiActivity
-import com.udemy.mealz.ui.MealCategoriesActivity
+import com.udemy.mealz.ui.meals.MealCategoriesActivity
 
 class MainActivity : ComponentActivity() {
   @OptIn(ExperimentalFoundationApi::class)

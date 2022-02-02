@@ -1,9 +1,9 @@
-package com.udemy.mealz.ui
+package com.udemy.mealz.ui.meals
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.udemy.mealz.ui.screen.MealCategoriesScreen
+import com.udemy.mealz.ui.meals.screen.MealCategoriesScreen
 import com.udemy.mealz.ui.theme.MyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
