@@ -34,7 +34,9 @@ class MealCategoriesActivity : ComponentActivity() {
 
     NavHost(navController = navController, startDestination = "meals_categories_screen") {
       composable("meals_categories_screen") {
-        MealCategoriesScreen()
+        MealCategoriesScreen(onMealCategoryClicked = { mealCategoryId ->
+          navController.navigate("meal_category_details_screen/$mealCategoryId")
+        })
       }
       composable(
         route = "meal_category_details_screen/{meal_category_id}",
