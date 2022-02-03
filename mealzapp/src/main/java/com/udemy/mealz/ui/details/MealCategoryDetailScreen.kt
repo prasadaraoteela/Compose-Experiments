@@ -1,34 +1,29 @@
 package com.udemy.mealz.ui.details
 
-import androidx.compose.animation.animateColor
-import androidx.compose.animation.core.animateDp
-import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.max
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberImagePainter
-import com.udemy.mealz.R
 import com.udemy.mealz.data.model.MealCategory
+import kotlin.math.min
 
 /**
  * Created by Prasada Rao on 02/02/22 7:00 PM
@@ -45,70 +40,56 @@ fun MealCategoryDetailScreen(mealCategoryId: String) {
     return
   }
 
-  var pictureState by remember { mutableStateOf(MealCategoryPictureState.Normal) }
-
-  val transition = updateTransition(targetState = pictureState, label = mealCategoryId)
-  val imageSize: Dp by transition.animateDp(
-    targetValueByState = { state -> state.size },
-    label = "MealCategoryPictureSizeAnimation"
-  )
-  val imageBorderWidth: Dp by transition.animateDp(
-    targetValueByState = { state -> state.borderWidth },
-    label = "MealCategoryPictureBorderWidthAnimation"
-  )
-  val imageBorderColor: Color by transition.animateColor(
-    targetValueByState = { state -> state.color },
-    label = "MealCategoryPictureBorderAnimation"
-  )
-
   val scrollState = rememberScrollState()
 
-  Column(modifier = Modifier.verticalScroll(state = scrollState)) {
-    Row {
-      Card(
-        modifier = Modifier.padding(16.dp),
-        shape = CircleShape,
-        border = BorderStroke(width = imageBorderWidth, color = imageBorderColor)
-      ) {
-        Image(
-          painter = rememberImagePainter(
-            data = mealCategory!!.thumbnailUrl,
-          ),
-          contentDescription = mealCategory!!.category,
-          modifier = Modifier.size(imageSize),
-          contentScale = ContentScale.Crop
-        )
-      }
-      Column {
-        Text(
-          text = mealCategory!!.category,
-          style = MaterialTheme.typography.h4,
-          modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)
-        )
-        Text(
-          text = mealCategory!!.description,
-          style = MaterialTheme.typography.subtitle1,
-          modifier = Modifier.padding(start = 16.dp, end = 16.dp)
-        )
+  val offset = min(1f, 1 - (scrollState.value / 600f))
+
+  Column {
+    Surface(elevation = 4.dp) {
+      Row {
+        Card(
+          modifier = Modifier.padding(16.dp),
+          shape = CircleShape,
+          border = BorderStroke(width = 2.dp, color = Color.Green)
+        ) {
+          Image(
+            painter = rememberImagePainter(
+              data = mealCategory!!.thumbnailUrl,
+            ),
+            contentDescription = mealCategory!!.category,
+            modifier = Modifier.size(max(80.dp, 200.dp * offset)),
+            contentScale = ContentScale.Crop
+          )
+        }
+        Column(
+          modifier = Modifier
+            .fillMaxWidth()
+            .align(Alignment.CenterVertically)
+        ) {
+          Text(
+            text = mealCategory!!.category,
+            style = MaterialTheme.typography.h4,
+            modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)
+          )
+        }
       }
     }
-    Button(onClick = {
-      pictureState = if (pictureState == MealCategoryPictureState.Normal) {
-        MealCategoryPictureState.Expanded
-      } else {
-        MealCategoryPictureState.Normal
-      }
-    }) {
-      Text(text = stringResource(R.string.button_change_meal_state_image))
+
+    Column(
+      modifier = Modifier
+        .padding(16.dp)
+        .verticalScroll(scrollState)
+    ) {
+      Text(
+        text = mealCategory!!.description,
+        style = MaterialTheme.typography.subtitle1,
+      )
+      Text(
+        text = mealCategory!!.description,
+        style = MaterialTheme.typography.subtitle1,
+      )
     }
   }
-}
-
-enum class MealCategoryPictureState(
-  val color: Color, val size: Dp, val borderWidth: Dp
-) {
-  Normal(color = Color.Magenta, size = 120.dp, borderWidth = 8.dp),
-  Expanded(color = Color.Green, size = 200.dp, borderWidth = 24.dp)
 }
 
 @Preview(showBackground = true)
