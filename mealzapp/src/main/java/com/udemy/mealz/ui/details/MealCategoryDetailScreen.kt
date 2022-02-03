@@ -1,11 +1,12 @@
 package com.udemy.mealz.ui.details
 
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -40,13 +41,15 @@ fun MealCategoryDetailScreen(mealCategoryId: String) {
     return
   }
 
-  val scrollState = rememberScrollState()
+  val scrollState = rememberLazyListState()
+  val offset = min(1f, 1 - (scrollState.firstVisibleItemScrollOffset / 600f + scrollState.firstVisibleItemIndex))
 
-  val offset = min(1f, 1 - (scrollState.value / 600f))
+  val imageSize by animateDpAsState(targetValue = max(80.dp, 200.dp * offset))
+
 
   Column {
     Surface(elevation = 4.dp) {
-      Row {
+      Row(modifier = Modifier.fillMaxWidth()) {
         Card(
           modifier = Modifier.padding(16.dp),
           shape = CircleShape,
@@ -57,14 +60,12 @@ fun MealCategoryDetailScreen(mealCategoryId: String) {
               data = mealCategory!!.thumbnailUrl,
             ),
             contentDescription = mealCategory!!.category,
-            modifier = Modifier.size(max(80.dp, 200.dp * offset)),
+            modifier = Modifier.size(imageSize),
             contentScale = ContentScale.Crop
           )
         }
         Column(
-          modifier = Modifier
-            .fillMaxWidth()
-            .align(Alignment.CenterVertically)
+          modifier = Modifier.align(Alignment.CenterVertically)
         ) {
           Text(
             text = mealCategory!!.category,
@@ -75,19 +76,14 @@ fun MealCategoryDetailScreen(mealCategoryId: String) {
       }
     }
 
-    Column(
-      modifier = Modifier
-        .padding(16.dp)
-        .verticalScroll(scrollState)
-    ) {
-      Text(
-        text = mealCategory!!.description,
-        style = MaterialTheme.typography.subtitle1,
-      )
-      Text(
-        text = mealCategory!!.description,
-        style = MaterialTheme.typography.subtitle1,
-      )
+    LazyColumn(state = scrollState) {
+      items(40) { num ->
+        Text(
+          text = (mealCategory?.category ?: "Empty category") + " " + num,
+          style = MaterialTheme.typography.body1,
+          modifier = Modifier.padding(8.dp)
+        )
+      }
     }
   }
 }
