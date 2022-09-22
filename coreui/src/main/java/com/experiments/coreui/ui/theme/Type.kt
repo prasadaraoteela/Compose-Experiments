@@ -80,7 +80,45 @@ val RobotoMonoFontFamily = FontFamily(
   ),
 )
 
+val LexendFontFamily = FontFamily(
+  Font(
+    resId = R.font.lexend_regular,
+    weight = FontWeight.Normal,
+    style = FontStyle.Normal
+  ),
+  Font(
+    resId = R.font.lexend_bold,
+    weight = FontWeight.Bold,
+    style = FontStyle.Normal
+  ),
+  Font(
+    resId = R.font.lexend_semibold,
+    weight = FontWeight.SemiBold,
+    style = FontStyle.Normal
+  ),
+  Font(
+    resId = R.font.lexend_light,
+    weight = FontWeight.Light,
+    style = FontStyle.Normal
+  ),
+  Font(
+    resId = R.font.lexend_medium,
+    weight = FontWeight.Medium,
+    style = FontStyle.Normal
+  ),
+  Font(
+    resId = R.font.lexend_extralight,
+    weight = FontWeight.ExtraLight,
+    style = FontStyle.Normal
+  ),
+  Font(
+    resId = R.font.lexend_thin,
+    weight = FontWeight.Thin,
+    style = FontStyle.Normal
+  ),
+)
+
 // Set of Material typography styles to start with
 val Typography = Typography(
-  defaultFontFamily = RobotoMonoFontFamily
+  defaultFontFamily = LexendFontFamily
 )
